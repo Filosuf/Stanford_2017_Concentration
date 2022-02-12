@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     //var emoji = Dictionary<Int, String>()
     var emoji = [Int: String]()
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         //1-я форма записи
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
