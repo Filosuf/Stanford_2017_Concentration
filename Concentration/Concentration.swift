@@ -10,9 +10,7 @@ import Foundation
 class Concentration
 {
     var cards = [Card]()
-    //счетчик нажатий
-    private(set) var flipCount = 0
-
+    private(set) var flipCount = 0 //счетчик нажатий
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex : Int?
@@ -35,6 +33,10 @@ class Concentration
     }
     
     func chooseCard(at index: Int) {
+        //Выбранная карта не является выбывшей из игры или уже открытой
+        if !cards[index].isMatched && !cards[index].isFaceUp  {
+            flipCount += 1
+        }
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 //проверка на совпадение карт
@@ -48,9 +50,7 @@ class Concentration
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
-        if cards[index].isFaceUp {
-            flipCount += 1
-        }
+
     }
 
     func newGame() {

@@ -10,15 +10,23 @@ import UIKit
 class ViewController: UIViewController {
     
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    
+    var indexTheme = 0
 
 
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func newGame(_ sender: UIButton) {
         game.newGame()
+        indexTheme = Int.random(in: 0..<emojiThemes.count)
+        print(indexTheme)
         updateViewFromModel()
     }
+
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        indexTheme = Int.random(in: 0..<emojiThemes.count)
+//        updateViewFromModel()
+//    }
 
     //массив Кнопок
     @IBOutlet var cardButtons: [UIButton]!
@@ -102,9 +110,9 @@ class ViewController: UIViewController {
 //            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
 //            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
 //        }
-        if emoji[card.identifier] == nil, emojiThemes[0].emojis.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiThemes[0].emojis.count)))
-            emoji[card.identifier] = emojiThemes[0].emojis.remove(at: randomIndex)
+        if emoji[card.identifier] == nil, emojiThemes[indexTheme].emojis.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiThemes[indexTheme].emojis.count)))
+            emoji[card.identifier] = emojiThemes[indexTheme].emojis.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
     }
