@@ -11,6 +11,8 @@ class Concentration
 {
     var cards = [Card]()
     private(set) var flipCount = 0 //счетчик нажатий
+    private var seenCards: Set<Int> = []
+    
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex : Int?

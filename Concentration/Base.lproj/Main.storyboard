@@ -175,6 +175,13 @@
                                     <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RkE-YY-LIb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wl-KH-TET">
+                                <rect key="frame" x="107" y="575" width="176" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.12884411369402382" green="0.12884411369402382" blue="0.12884411369402382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,6 +196,8 @@
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="mxk-wa-tK0" id="TFk-gk-mSg"/>
+                        <outlet property="newGameButton" destination="T06-fr-iHB" id="SZJ-eG-kgp"/>
+                        <outlet property="scoreLabel" destination="7wl-KH-TET" id="sBy-0n-ekq"/>
                         <outletCollection property="cardButtons" destination="jDz-rx-Nhh" collectionClass="NSMutableArray" id="XBb-04-UG3"/>
                         <outletCollection property="cardButtons" destination="oin-SL-2Mg" collectionClass="NSMutableArray" id="MRv-Ik-tBK"/>
                         <outletCollection property="cardButtons" destination="25m-kI-6cx" collectionClass="NSMutableArray" id="ASN-cc-QqA"/>
