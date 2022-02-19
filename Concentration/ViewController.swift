@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     }
 
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var flipCountLabel: UILabel!
     //массив Кнопок
     @IBOutlet var cardButtons: [UIButton]!
