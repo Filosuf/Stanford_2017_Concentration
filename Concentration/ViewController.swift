@@ -17,18 +17,18 @@ class ViewController: UIViewController {
     var indexTheme = 0 {
         didSet{
             emojiChoices = emojiThemes[indexTheme].emojis
-//            print(emojiChoices)
             backgroundColorCard = emojiThemes[indexTheme].cardColor
             backgroundColorView = emojiThemes[indexTheme].viewColor
 
             view.backgroundColor = backgroundColorView
             flipCountLabel.textColor = backgroundColorCard
             scoreLabel.textColor = backgroundColorCard
-//            titleLabel.textColor = cardBackColor
+            titleLabel.textColor = backgroundColorCard
             newGameButton.setTitleColor(backgroundColorView, for: .normal)
             newGameButton.backgroundColor = backgroundColorCard
 
             updateViewFromModel()
+            titleLabel.text = emojiThemes[indexTheme].name
         }
     }
 
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         game.newGame()
         indexTheme = Int.random(in: 0..<emojiThemes.count)
         emoji = [Int: String]()
-        updateViewFromModel()
+//        updateViewFromModel()
     }
 
     override func viewDidLoad() {
@@ -72,7 +72,6 @@ class ViewController: UIViewController {
             if card.isFaceUp {
                 button.setTitle(emoji (for: card), for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-               // button.titleLabel?.font = UIFont.systemFont(ofSize: 140) //не работает с эмоджи
             } else {
                 button.setTitle("", for: .normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : backgroundColorCard
@@ -81,9 +80,6 @@ class ViewController: UIViewController {
         flipCountLabel.text = "Flips: \(game.flipCount)"
         scoreLabel.text = "Score: \(game.score)"
     }
-//    var emojiChoicesArray = [0: "s"]
-//    var emojiChoicesArray[0] =  "s"
-
 
     private struct Theme {
         var name: String

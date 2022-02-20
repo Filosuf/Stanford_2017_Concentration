@@ -11,8 +11,9 @@ class Concentration
 {
     var cards = [Card]()
     private(set) var flipCount = 0 //счетчик нажатий
-    private(set) var score = 0 //набранные очки
+    private(set) var score = 0.0 //набранные очки
     private var viewedCards: Set<Int> = []
+    private var date = Date()
     
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
@@ -29,6 +30,9 @@ class Concentration
             return foundIndex
         }
         set (newValue) {
+            if (!cards[newValue!].isFaceUp) {
+                date = Date()
+            }
             for index in cards.indices {
                 cards[index].isFaceUp = (index == newValue)
             }
@@ -47,6 +51,12 @@ class Concentration
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     score += 2
+                    switch abs(date.timeIntervalSinceNow) {
+                    case 0 ..< 1: score += 0.5
+                    case 1 ..< 1.5: score += 0.25
+                    case 1.5 ..< 2: score += 0.1
+                    default: score += 0.0
+                    }
                 }
                 else {
                     if viewedCards.contains(matchIndex) {
