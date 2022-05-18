@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    var emoji = [Int: String]()
+    var emoji = [Card: String]()
     private var backgroundColorView = UIColor.black
     private var backgroundColorCard = UIColor.orange
     private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     @IBAction func newGame(_ sender: UIButton) {
         game.newGame()
         indexTheme = Int.random(in: 0..<emojiThemes.count)
-        emoji = [Int: String]()
+        emoji = [:]
 //        updateViewFromModel()
     }
 
@@ -125,11 +125,11 @@ class ViewController: UIViewController {
 
     private func emoji(for card: Card) -> String {
         //1-я форма записи
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+        if emoji[card] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card] = emojiChoices.remove(at: randomIndex)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     
